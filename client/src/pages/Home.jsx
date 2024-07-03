@@ -3,8 +3,10 @@ import FeatureCard from '../components/FeatureCard';
 import iconChat from '../assets/images/icon-chat.png';
 import iconMoney from '../assets/images/icon-money.png';
 import iconSecurity from '../assets/images/icon-security.png';
-
+import { useSelector } from 'react-redux';
 const Home = () => {
+	const userId = useSelector((state) => state.userId.userId);
+
 	return (
 		<main className='main'>
 			<section className='hero'>

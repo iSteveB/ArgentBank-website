@@ -211,6 +211,10 @@ header {
   font-size: 1.2rem;
 }
 
+.input-wrapper.error, .error {
+  color: red;
+}
+
 .footer {
   display: flex;
   justify-content: center;
