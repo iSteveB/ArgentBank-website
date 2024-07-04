@@ -33,7 +33,9 @@ const Form = () => {
 				setError(data.message);
 			} else {
 				setError(null);
+				console.log(data.body.token);
 				dispatch(getUserId(data.body.token));
+				window.location.href = '/profile';
 			}
 		} catch (error) {
 			console.error(error);

@@ -11,11 +11,11 @@ const Header = () => {
 			<nav className='main-nav'>
 				<Logo />
 				<div>
-					<Link className='main-nav-item' to='/auth'>
+					<Link className='main-nav-item' to='/login'>
 						<FontAwesomeIcon
 							icon={faCircleUser}
 							className='fa fa-user-circle'
-						/>{' '}
+						/>
 						Sign In
 					</Link>
 				</div>
