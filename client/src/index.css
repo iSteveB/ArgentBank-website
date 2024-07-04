@@ -44,6 +44,7 @@ body {
 header {
   height: 70px;
 }
+
 .main-nav {
   display: flex;
   justify-content: space-between;
@@ -225,6 +226,11 @@ header {
 .footer-text {
   margin: 0;
   padding: 0;
+}
+
+.profil-header {
+  color: #fff;
+  margin-bottom: 2rem;
 }
 
 .account {
