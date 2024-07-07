@@ -1,57 +1,37 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { getUserId } from '../../features/userIdSlices';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../feature/auth/authSlice';
 
 const Form = () => {
-	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [rememberMe, setRememberMe] = useState(false);
-	const [error, setError] = useState(null);
+	const { status, error } = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (status === 'succeeded') {
+			navigate('/profile');
+		}
+	}, [status]);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-
-		try {
-			const response = await fetch(
-				'http://localhost:3001/api/v1/user/login',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						email: username,
-						password,
-					}),
-				}
-			);
-
-			const data = await response.json();
-
-			if (!data.body) {
-				setError(data.message);
-			} else {
-				setError(null);
-				console.log(data.body.token);
-				dispatch(getUserId(data.body.token));
-				window.location.href = '/profile';
-			}
-		} catch (error) {
-			console.error(error);
-		}
+		dispatch(login({ email, password }));
 	};
 
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className={`input-wrapper ${error ? 'error' : ''}`}>
-				<label htmlFor='username'>Username</label>
+				<label htmlFor='email'>Email</label>
 				<input
 					type='text'
-					id='username'
-					autoComplete='username'
-					onChange={(e) => setUsername(e.target.value)}
-					value={username}
+					id='email'
+					autoComplete='email'
+					onChange={(e) => setEmail(e.target.value)}
+					value={email}
 				/>
 			</div>
 			<div className={`input-wrapper ${error ? 'error' : ''}`}>
@@ -64,7 +44,7 @@ const Form = () => {
 					value={password}
 				/>
 			</div>
-			{error && <p className='error'>{error}</p>}
+			{status === 'failed' && <p className='error'>{error}</p>}
 			<div className='input-remember'>
 				<input
 					type='checkbox'

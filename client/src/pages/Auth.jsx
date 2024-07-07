@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../components/Auth/Form';
+import LoginForm from '../components/Auth/LoginForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,7 +9,7 @@ const Auth = () => {
       <section className="sign-in-content">
         <FontAwesomeIcon icon={faUserCircle} className='sign-in-icon' />
         <h1>Sign In</h1>
-        <Form />
+        <LoginForm />
       </section>
     </main>
   );

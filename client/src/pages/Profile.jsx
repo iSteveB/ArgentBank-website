@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../feature/userSlice';
 
 const Profile = () => {
+	const token = useSelector((state) => state?.auth?.token);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (token) {
+			fetch(`http://localhost:3001/api/v1/user/profile`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${token}`
+				}})
+				.then((response) => response.json())
+				.then((data) => {
+					dispatch(getUser(data.body))
+					console.log(data);
+				});
+		}
+	}, [token]);
+
 	return (
 		<main className='main bg-dark'>
 			<div className='profil-header'>
@@ -15,9 +36,13 @@ const Profile = () => {
 
 			<section className='account'>
 				<div className='account-content-wrapper'>
-					<h3 className='account-title'>Argent Bank Checking (x8349)</h3>
+					<h3 className='account-title'>
+						Argent Bank Checking (x8349)
+					</h3>
 					<p className='account-amount'>$2,082.79</p>
-					<p className='account-amount-description'>Available Balance</p>
+					<p className='account-amount-description'>
+						Available Balance
+					</p>
 				</div>
 				<div className='account-content-wrapper cta'>
 					<button className='transaction-button'>
