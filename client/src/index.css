@@ -52,7 +52,7 @@ header {
   padding: 5px 20px;
 }
 
-.main-nav a {
+.main-nav a, .logout {
   font-weight: bold;
   color: #2c3e50;
 }
@@ -68,6 +68,12 @@ header {
 
 .main-nav-item:hover {
   text-decoration: underline;
+}
+
+.logout {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .main-nav-logo {

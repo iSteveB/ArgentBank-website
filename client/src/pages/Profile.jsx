@@ -1,23 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../feature/userSlice';
+import { useNavigate } from 'react-router-dom';
+import EditForm from '../components/EditForm';
 
 const Profile = () => {
+	const [showEditForm, setShowEditForm] = useState(false);
 	const token = useSelector((state) => state?.auth?.token);
+	const user = useSelector((state) => state?.user?.user);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (token) {
+		if (!token) {
+			navigate('/login');
+		} else {
 			fetch(`http://localhost:3001/api/v1/user/profile`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${token}`
-				}})
+					Authorization: `Bearer ${token}`,
+				},
+			})
 				.then((response) => response.json())
 				.then((data) => {
-					dispatch(getUser(data.body))
-					console.log(data);
+					dispatch(getUser(data.body));
 				});
 		}
 	}, [token]);
@@ -25,12 +32,22 @@ const Profile = () => {
 	return (
 		<main className='main bg-dark'>
 			<div className='profil-header'>
-				<h1>
-					Welcome back
-					<br />
-					Tony Jarvis!
-				</h1>
-				<button className='edit-button'>Edit Name</button>
+				{showEditForm ? (
+					<EditForm setShowEditForm={setShowEditForm} />
+				) : (
+					<>
+						<h1>
+							Welcome back
+							<br />
+							{user?.firstName} {user?.lastName}
+						</h1>
+						<button
+							className='edit-button'
+							onClick={() => setShowEditForm(true)}>
+							Edit Name
+						</button>
+					</>
+				)}
 			</div>
 			<h2 className='sr-only'>Accounts</h2>
 

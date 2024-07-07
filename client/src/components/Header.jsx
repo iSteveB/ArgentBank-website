@@ -3,10 +3,23 @@ import Logo from './Logo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../feature/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { getUser } from '../feature/userSlice';
 
 const Header = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const token = useSelector((state) => state?.auth?.token);
+	const user = useSelector((state) => state?.user?.user);
+
+	const handleLogout = () => {
+		dispatch(logout());
+		dispatch(getUser(null));
+		navigate('/');
+	};
+
 	return (
 		<header className='header'>
 			<nav className='main-nav'>
@@ -28,12 +41,18 @@ const Header = () => {
 									icon={faCircleUser}
 									className='fa fa-user-circle'
 								/>
-								Name
+								{user?.firstName}
 							</Link>
-							<Link className='main-nav-item' to='/'>
-							<FontAwesomeIcon icon={faSignOutAlt} className='fa fa-sign-out' />
+							<button
+								className='main-nav-item logout'
+								onClick={handleLogout}>
+								<FontAwesomeIcon
+									icon={faSignOutAlt}
+									className='fa fa-sign-out'
+									onClick={handleLogout}
+								/>
 								Sign Out
-							</Link>
+							</button>
 						</div>
 					)}
 				</div>
