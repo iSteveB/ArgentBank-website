@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../feature/userSlice';
 import { useNavigate } from 'react-router-dom';
 import EditForm from '../components/EditForm';
+import Card from '../components/Card';
 
 const Profile = () => {
 	const [showEditForm, setShowEditForm] = useState(false);
@@ -40,23 +41,9 @@ const Profile = () => {
 				)}
 			</div>
 			<h2 className='sr-only'>Accounts</h2>
-
-			<section className='account'>
-				<div className='account-content-wrapper'>
-					<h3 className='account-title'>
-						Argent Bank Checking (x8349)
-					</h3>
-					<p className='account-amount'>$2,082.79</p>
-					<p className='account-amount-description'>
-						Available Balance
-					</p>
-				</div>
-				<div className='account-content-wrapper cta'>
-					<button className='transaction-button'>
-						View transactions
-					</button>
-				</div>
-			</section>
+			<Card />
+			<Card />
+			<Card />
 		</main>
 	);
 };
