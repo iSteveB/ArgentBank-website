@@ -70,6 +70,10 @@ header {
   text-decoration: underline;
 }
 
+.main-nav-item svg {
+  margin-right: 0.25rem;
+}
+
 .logout {
   background: none;
   border: none;
@@ -294,6 +298,24 @@ header {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.edit-form input {
+  padding: 5px;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.edit-form button {
+  font-weight: bold;
+  margin: 1rem 1rem;
+  width: 150px;
 }
 
 @media (min-width: 720px) {
