@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Logo from './Logo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -16,9 +16,12 @@ const Header = () => {
 
 	const handleLogout = () => {
 		dispatch(logout());
-		dispatch(getUser(null));
 		navigate('/');
 	};
+
+	useEffect(() => {
+		if (token) dispatch(getUser(token));
+	}, [token, dispatch]);
 
 	return (
 		<header className='header'>
