@@ -44,7 +44,7 @@ const Header = () => {
 									icon={faCircleUser}
 									className='fa fa-user-circle'
 								/>
-								{user?.firstName}
+								{user?.userName}
 							</Link>
 							<button
 								className='main-nav-item logout'
