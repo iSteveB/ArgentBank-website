@@ -1,13 +1,15 @@
 import React from 'react';
 import FeatureCard from '../components/FeatureCard';
-import iconChat from '../assets/images/icon-chat.png';
-import iconMoney from '../assets/images/icon-money.png';
-import iconSecurity from '../assets/images/icon-security.png';
+import banner from "../assets/images/bank-tree.webp";
+import iconChat from '../assets/images/icon-chat.webp';
+import iconMoney from '../assets/images/icon-money.webp';
+import iconSecurity from '../assets/images/icon-security.webp';
 
 const Home = () => {
 	return (
 		<main className='main'>
 			<section className='hero'>
+				<img src={banner} alt="banner" className='hero-banner' loading='lazy' />
 				<div className='hero-content'>
 					<h2 className='sr-only'>Promoted Content</h2>
 					<p className='subtitle'>No fees.</p>

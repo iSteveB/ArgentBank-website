@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/images/argentBankLogo.png'
+import logo from '../assets/images/argentBankLogo.webp'
 import { Link } from 'react-router-dom';
 
 const Logo = () => {
