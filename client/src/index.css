@@ -91,16 +91,13 @@ header {
 }
 
 .hero {
-  height: 400px;
+  background-image: url('./assets/images/bank-tree.webp');
+  background-position: 0 -50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
   width: 100%;
   position: relative;
-}
-
-.hero-banner {
-  position: relative;
-  height: 400px;
-  width: 100%;
-  aspect-ratio: 16/9;
 }
 
 .hero-content {
