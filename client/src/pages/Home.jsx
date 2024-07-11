@@ -1,8 +1,8 @@
 import React from 'react';
 import FeatureCard from '../components/FeatureCard';
-import iconChat from '../assets/images/icon-chat.png';
-import iconMoney from '../assets/images/icon-money.png';
-import iconSecurity from '../assets/images/icon-security.png';
+import iconChat from '../assets/images/icon-chat.webp';
+import iconMoney from '../assets/images/icon-money.webp';
+import iconSecurity from '../assets/images/icon-security.webp';
 
 const Home = () => {
 	return (

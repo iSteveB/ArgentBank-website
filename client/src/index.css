@@ -201,6 +201,8 @@ header {
 
 .input-remember {
   display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 
 .input-remember label {

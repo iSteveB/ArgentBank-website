@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../feature/userSlice';
 import { updateUser } from '../feature/updateUserSlice';
+import FormField from './FormField';
+import Button from './Button';
 
 const EditForm = ({ setShowEditForm }) => {
 	const token = useSelector((state) => state?.auth?.token);
@@ -21,33 +23,42 @@ const EditForm = ({ setShowEditForm }) => {
 		<div>
 			<h1>Edit user info</h1>
 			<form onSubmit={handleSubmit} className='edit-form'>
+				<FormField
+					label='User name:'
+					inputId='username'
+					inputType='text'
+					value={updateUsername}
+					onChange={(e) => setUpdateUsername(e.target.value)}
+					isDisabled={false}
+				/>
+				<FormField
+					label='First name:'
+					inputId='firstName'
+					inputType='text'
+					value={user?.firstName}
+					onChange={(e) => setUpdateUsername(e.target.value)}
+					isDisabled={true}
+				/>
+				<FormField
+					label='Last name:'
+					inputId='lastName'
+					inputType='text'
+					value={user?.lastName}
+					onChange={(e) => setUpdateUsername(e.target.value)}
+					isDisabled={true}
+				/>
 				<div>
-					<label>User name:</label>
-					<input
-						type='text'
-						value={updateUsername}
-						onChange={(e) => setUpdateUsername(e.target.value)}
+					<Button
+						value='Save'
+						type='submit'
+						className='edit-button'
 					/>
-				</div>
-				<div>
-					<label>First name:</label>
-					<input type='text' value={user?.firstName} disabled />
-				</div>
-				<div>
-					<label>Last name:</label>
-					<input type='text' value={user?.lastName} disabled />
-				</div>
-
-				<div>
-					<button type='submit' className='edit-button'>
-						Save
-					</button>
-					<button
+					<Button
+						value='Cancel'
 						type='button'
 						className='edit-button'
-						onClick={() => setShowEditForm(false)}>
-						Cancel
-					</button>
+						onClick={() => setShowEditForm(false)}
+					/>
 				</div>
 			</form>
 		</div>
