@@ -32,6 +32,7 @@ const Form = () => {
 				inputType='email'
 				value={email}
 				onChange={(e) => setEmail(e.target.value)}
+				autocomplete='email'
 			/>
 			<FormField
 				parentClassName={`input-wrapper ${error ? 'error' : ''}`}
@@ -39,6 +40,7 @@ const Form = () => {
 				inputType='password'
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
+				autocomplete='current-password'
 			/>
 			{status === 'failed' && <p className='error'>{error}</p>}
 			<FormField

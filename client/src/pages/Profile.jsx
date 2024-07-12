@@ -7,8 +7,8 @@ import Card from '../components/Card';
 
 const Profile = () => {
 	const [showEditForm, setShowEditForm] = useState(false);
-	const token = useSelector((state) => state?.auth?.token);
-	const user = useSelector((state) => state?.user?.user);
+	const token = useSelector((state) => state.auth?.token);
+	const user = useSelector((state) => state.user?.user);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 

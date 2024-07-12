@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FormField = ({parentClassName, label, inputType, inputId, value, onChange, isDisabled = false}) => {
+const FormField = ({parentClassName, label, inputType, inputId, value, onChange, isDisabled = false, autocomplete}) => {
 	return (
 		<div className={parentClassName}>
 			<label htmlFor={inputId}>{label}</label>
@@ -10,6 +10,7 @@ const FormField = ({parentClassName, label, inputType, inputId, value, onChange,
 				value={value}
 				onChange={onChange}
         disabled={isDisabled}
+				autoComplete={autocomplete}
 			/>
 		</div>
 	);
